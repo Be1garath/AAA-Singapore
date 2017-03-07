@@ -1,0 +1,91 @@
+---
+title: "AZ Sestante - AAA Allocations"
+author: "Marco Cora"
+date: "January 20, 2017"
+output:
+  ioslides_presentation: default
+  beamer_presentation: default
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = FALSE)
+library(knitr)
+```
+
+
+## Diversified - Weights
+
+```{r}
+
+kable(Portfolio.Div[[5]]$Weights[,1:2],
+      digits = 2,
+      align="cc",
+      longtable=TRUE,
+      format = "html")
+
+```
+
+## Diversified - Weights
+
+```{r}
+barplot(t(Portfolio.Div[[5]]$Weights[,1:2]),
+        beside=TRUE,
+        col=c("darkblue","red"),
+        legend.text=c("SAA", "TAA"),
+        horiz=FALSE,
+        names.arg=rownames(Portfolio.Div[[5]]$Weights),
+        main="AZ Sestante - Diversified")
+
+
+```
+
+
+
+## Diversified - Factor Contribution
+
+```{r}
+barplot(t(Portfolio.Div[[5]]$`Factor Contributions`[,1:2]),
+        beside=TRUE,
+        col=c("darkblue","red"),
+        legend.text=c("SAA", "TAA"),
+        horiz=FALSE,
+        names.arg=rownames(Portfolio.Div[[5]]$`Factor Contributions`),
+        main="AZ Sestante - Diversified")
+```
+
+## Diversified - Correlation
+
+```{r}
+library(corrplot)
+
+corrplot.mixed (Cormat.SAA, 
+          lower ="pie",
+          upper = "number")
+```
+
+
+
+## Slide with Bullets
+
+```{r results='asis'}
+kable(Portfolio.Div[[5]]$`Sum of Allocations`,
+      digits = 2)
+```
+
+
+- Bullet 1
+- Bullet 2
+- Bullet 3
+
+## Slide with R Output
+
+```{r cars, echo = TRUE}
+summary(cars)
+```
+
+## Slide with Plot
+
+```{r pressure}
+plot(pressure)
+```
+
